@@ -49,7 +49,7 @@ let stungerfunctyon4 x = x + (1 + x) ;;
 
 let stungerfunctyon5 x = (fun y -> y + (1 + x)) x ;;
 let funnyfunctyon1 x = x + amazingnumber1
-(* let funnyfunctyon2 x = x + 2
+let funnyfunctyon2 x = x + 2
 let funnyfunctyon3 x = x + 3
 let funnyfunctyon4 x = x + 4
 let funnyfunctyon5 x = x + 5
@@ -146,4 +146,4 @@ let funnyfunctyon95 x = x + 95
 let funnyfunctyon96 x = x + 96
 let funnyfunctyon97 x = x + 97
 let funnyfunctyon98 x = x + 98
-let funnyfunctyon99 x = x + 99 *)
+let funnyfunctyon99 x = x + 99
