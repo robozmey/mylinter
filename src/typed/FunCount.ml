@@ -94,16 +94,14 @@ let run {Compile_common.source_file; _} fallback =
           let x = item.str_loc.Location.loc_start.Lexing.pos_fname in
           if x == acc || acc == "XD ;3" then x else ""
           ) ~init:"XD ;3" item_list in
-        let too_mush_function = count_of_fuctions > 100 in
-        let item_check str_item = 
-          if is_item_has_function str_item && too_mush_function
-          then (
-            let loc = str_item.str_loc in
-            let filename = loc.Location.loc_start.Lexing.pos_fname in
-            CollectedLints.add ~loc (report ~filename ~loc ("This file contains " ^ string_of_int count_of_fuctions ^ " but less 100 expected!")))
-        in
-        List.iter ~f:item_check item_list;
-          
+
+        if count_of_fuctions > 100  then (
+        let first_item = List.hd @@ List.filter ~f:is_item_has_function item_list in
+        Option.iter first_item ~f:(fun first_item ->
+          let loc = first_item.str_loc in
+          CollectedLints.add ~loc (report ~filename ~loc ("This file contains " ^ string_of_int count_of_fuctions ^ " but less 100 expected!")))
+        );
+        
 
         fallback.structure self str)
   }
