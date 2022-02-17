@@ -1,0 +1,8 @@
+(library
+ (name test_funCount)
+ (wrapped false)
+ (modules FunCount;
+ FunCount2))
+
+(cram
+ (deps %{bin:mylinter.exe}))
